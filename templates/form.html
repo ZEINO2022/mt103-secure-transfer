@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MT103 Transfer Form</title>
+  <style>
+    body { font-family: Arial; margin: 40px; background: #f4f4f4; }
+    h2 { color: #333; }
+    form { background: #fff; padding: 20px; border-radius: 8px; width: 500px; }
+    label { display: block; margin-top: 10px; }
+    input { width: 100%; padding: 8px; margin-top: 5px; }
+    button { margin-top: 20px; padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; }
+    .result { margin-top: 30px; background: #eef; padding: 20px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h2>SWIFT MT103 Transfer</h2>
+  <form id="mt103-form">
+    <label>Sender Name</label>
+    <input name="sender_name" required />
+    
+    <label>Sender Account</label>
+    <input name="sender_account" required />
+    
+    <label>Sender IBAN</label>
+    <input name="sender_iban" required />
+    
+    <label>Sender Bank Name</label>
+    <input name="sender_bank" required />
+    
+    <label>Sender SWIFT Code</label>
+    <input name="sender_swift" required />
+
+    <label>Receiver Name</label>
+    <input name="receiver_name" required />
+
+    <label>Receiver IBAN</label>
+    <input name="receiver_iban" required />
+
+    <label>Receiver Bank Name</label>
+    <input name="receiver_bank" required />
+
+    <label>Receiver SWIFT Code</label>
+    <input name="receiver_swift" required />
+
+    <label>Transfer Amount (EUR)</label>
+    <input name="amount" type="number" required />
+
+    <button type="submit">Send Transfer</button>
+  </form>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    document.getElementById('mt103-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const payload = {
+        protocol: "101.1",
+        server: "SBI-3.10.0693.5.2-e19",
+        currency: "EUR",
+        amount: parseFloat(form.amount.value),
+        sender: {
+          Name: form.sender_name.value,
+          Account: form.sender_account.value,
+          IBAN: form.sender_iban.value,
+          Bank: form.sender_bank.value,
+          SWIFT: form.sender_swift.value
+        },
+        receiver: {
+          Name: form.receiver_name.value,
+          IBAN: form.receiver_iban.value,
+          Bank: form.receiver_bank.value,
+          SWIFT: form.receiver_swift.value
+        }
+      };
+
+      const res = await fetch('/api/send_mt103', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+      document.getElementById('result').innerText =
+        res.ok ? JSON.stringify(data, null, 2) : `Error: ${data.error}`;
+    });
+  </script>
+</body>
+</html>
