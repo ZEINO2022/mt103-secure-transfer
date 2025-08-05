@@ -1,0 +1,7 @@
+Flask==2.3.3
+Flask-Compress==1.14
+Flask-Caching==2.1.0
+gunicorn==21.2.0
+redis==5.0.1
+psutil==5.9.6
+prometheus-client==0.17.1
