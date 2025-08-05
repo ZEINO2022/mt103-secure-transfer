@@ -1,91 +1,205 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MT103 Transfer Form</title>
-  <style>
-    body { font-family: Arial; margin: 40px; background: #f4f4f4; }
-    h2 { color: #333; }
-    form { background: #fff; padding: 20px; border-radius: 8px; width: 500px; }
-    label { display: block; margin-top: 10px; }
-    input { width: 100%; padding: 8px; margin-top: 5px; }
-    button { margin-top: 20px; padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; }
-    .result { margin-top: 30px; background: #eef; padding: 20px; border-radius: 8px; }
-  </style>
+  <meta name="description" content="نموذج تحويل SWIFT MT103 محسن للأداء" />
+  <meta name="theme-color" content="#007bff" />
+  
+  <!-- تحسينات الأداء - Preload للموارد المهمة -->
+  <link rel="preload" href="/static/css/styles.css" as="style" />
+  <link rel="preload" href="/static/js/app.js" as="script" />
+  
+  <!-- تحسينات SEO -->
+  <link rel="canonical" href="/" />
+  
+  <title>نموذج تحويل SWIFT MT103</title>
+  
+  <!-- CSS المحسن -->
+  <link rel="stylesheet" href="/static/css/styles.css" />
+  
+  <!-- تحسينات للأداء - DNS prefetch -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  
+  <!-- تحسينات للأداء - Resource hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
 </head>
 <body>
-  <h2>SWIFT MT103 Transfer</h2>
-  <form id="mt103-form">
-    <label>Sender Name</label>
-    <input name="sender_name" required />
+  <div class="container">
+    <div class="header">
+      <h2>نموذج تحويل SWIFT MT103</h2>
+    </div>
     
-    <label>Sender Account</label>
-    <input name="sender_account" required />
-    
-    <label>Sender IBAN</label>
-    <input name="sender_iban" required />
-    
-    <label>Sender Bank Name</label>
-    <input name="sender_bank" required />
-    
-    <label>Sender SWIFT Code</label>
-    <input name="sender_swift" required />
+    <div class="form-container">
+      <form id="mt103-form" novalidate>
+        <!-- بيانات المرسل -->
+        <div class="form-section">
+          <h3>بيانات المرسل</h3>
+          
+          <div class="form-group">
+            <label for="sender_name">اسم المرسل *</label>
+            <input 
+              id="sender_name"
+              name="sender_name" 
+              type="text"
+              required 
+              autocomplete="name"
+              placeholder="أدخل اسم المرسل"
+            />
+          </div>
+          
+          <div class="form-group">
+            <label for="sender_account">رقم الحساب *</label>
+            <input 
+              id="sender_account"
+              name="sender_account" 
+              type="text"
+              required 
+              autocomplete="cc-number"
+              placeholder="أدخل رقم الحساب"
+            />
+          </div>
+          
+          <div class="form-group">
+            <label for="sender_iban">IBAN المرسل *</label>
+            <input 
+              id="sender_iban"
+              name="sender_iban" 
+              type="text"
+              required 
+              pattern="[A-Z]{2}[0-9]{2}[A-Z0-9]{4}[0-9]{7}([A-Z0-9]?){0,16}"
+              placeholder="مثال: SA0380000000608010167519"
+            />
+          </div>
+          
+          <div class="form-group">
+            <label for="sender_bank">اسم البنك *</label>
+            <input 
+              id="sender_bank"
+              name="sender_bank" 
+              type="text"
+              required 
+              autocomplete="organization"
+              placeholder="أدخل اسم البنك"
+            />
+          </div>
+          
+          <div class="form-group">
+            <label for="sender_swift">رمز SWIFT *</label>
+            <input 
+              id="sender_swift"
+              name="sender_swift" 
+              type="text"
+              required 
+              pattern="[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?"
+              placeholder="مثال: SABBSARI"
+            />
+          </div>
+        </div>
 
-    <label>Receiver Name</label>
-    <input name="receiver_name" required />
+        <!-- بيانات المستلم -->
+        <div class="form-section">
+          <h3>بيانات المستلم</h3>
+          
+          <div class="form-group">
+            <label for="receiver_name">اسم المستلم *</label>
+            <input 
+              id="receiver_name"
+              name="receiver_name" 
+              type="text"
+              required 
+              autocomplete="name"
+              placeholder="أدخل اسم المستلم"
+            />
+          </div>
+          
+          <div class="form-group">
+            <label for="receiver_iban">IBAN المستلم *</label>
+            <input 
+              id="receiver_iban"
+              name="receiver_iban" 
+              type="text"
+              required 
+              pattern="[A-Z]{2}[0-9]{2}[A-Z0-9]{4}[0-9]{7}([A-Z0-9]?){0,16}"
+              placeholder="مثال: DE89370400440532013000"
+            />
+          </div>
+          
+          <div class="form-group">
+            <label for="receiver_bank">اسم البنك *</label>
+            <input 
+              id="receiver_bank"
+              name="receiver_bank" 
+              type="text"
+              required 
+              autocomplete="organization"
+              placeholder="أدخل اسم البنك"
+            />
+          </div>
+          
+          <div class="form-group">
+            <label for="receiver_swift">رمز SWIFT *</label>
+            <input 
+              id="receiver_swift"
+              name="receiver_swift" 
+              type="text"
+              required 
+              pattern="[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?"
+              placeholder="مثال: COBADEFF"
+            />
+          </div>
+        </div>
 
-    <label>Receiver IBAN</label>
-    <input name="receiver_iban" required />
+        <!-- تفاصيل التحويل -->
+        <div class="form-section">
+          <h3>تفاصيل التحويل</h3>
+          
+          <div class="form-group">
+            <label for="amount">مبلغ التحويل (يورو) *</label>
+            <input 
+              id="amount"
+              name="amount" 
+              type="number"
+              required 
+              min="0.01"
+              step="0.01"
+              placeholder="أدخل المبلغ"
+            />
+          </div>
+        </div>
 
-    <label>Receiver Bank Name</label>
-    <input name="receiver_bank" required />
+        <button type="submit" id="submit-btn" class="btn">
+          إرسال التحويل
+        </button>
+      </form>
 
-    <label>Receiver SWIFT Code</label>
-    <input name="receiver_swift" required />
+      <!-- حالة التحميل -->
+      <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>جاري معالجة التحويل...</p>
+      </div>
 
-    <label>Transfer Amount (EUR)</label>
-    <input name="amount" type="number" required />
+      <!-- نتيجة العملية -->
+      <div id="result" class="result"></div>
+    </div>
+  </div>
 
-    <button type="submit">Send Transfer</button>
-  </form>
-
-  <div class="result" id="result"></div>
-
+  <!-- JavaScript المحسن -->
+  <script src="/static/js/app.js" defer></script>
+  
+  <!-- تحسينات للأداء - Service Worker -->
   <script>
-    document.getElementById('mt103-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const form = e.target;
-      const payload = {
-        protocol: "101.1",
-        server: "SBI-3.10.0693.5.2-e19",
-        currency: "EUR",
-        amount: parseFloat(form.amount.value),
-        sender: {
-          Name: form.sender_name.value,
-          Account: form.sender_account.value,
-          IBAN: form.sender_iban.value,
-          Bank: form.sender_bank.value,
-          SWIFT: form.sender_swift.value
-        },
-        receiver: {
-          Name: form.receiver_name.value,
-          IBAN: form.receiver_iban.value,
-          Bank: form.receiver_bank.value,
-          SWIFT: form.receiver_swift.value
-        }
-      };
-
-      const res = await fetch('/api/send_mt103', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/static/sw.js')
+          .then(registration => {
+            console.log('SW registered: ', registration);
+          })
+          .catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
+          });
       });
-
-      const data = await res.json();
-      document.getElementById('result').innerText =
-        res.ok ? JSON.stringify(data, null, 2) : `Error: ${data.error}`;
-    });
+    }
   </script>
 </body>
 </html>
