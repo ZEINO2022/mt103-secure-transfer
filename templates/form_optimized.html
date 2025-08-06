@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Secure SWIFT MT103 international wire transfer form">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
+  
+  <!-- Performance optimizations -->
+  <link rel="preload" href="assets/styles.css" as="style">
+  <link rel="preload" href="assets/script.js" as="script">
+  <link rel="dns-prefetch" href="//api.example.com">
+  
+  <!-- Critical CSS inlined for faster rendering -->
+  <style>
+    /* Critical above-the-fold styles */
+    body{font-family:Arial,sans-serif;margin:40px;background:#f4f4f4;line-height:1.6;color:#333}
+    h2{color:#333;margin-bottom:20px;font-weight:600}
+    form{background:#fff;padding:20px;border-radius:8px;width:100%;max-width:500px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+    .loading-indicator{display:none;text-align:center;padding:20px}
+  </style>
+  
+  <!-- Load main stylesheet -->
+  <link rel="stylesheet" href="assets/styles.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="assets/styles.css"></noscript>
+  
+  <title>MT103 Transfer Form - Secure International Wire Transfer</title>
+</head>
+<body>
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:6px;background:#007bff;color:white;padding:8px;text-decoration:none;z-index:100;transition:top 0.3s" 
+     onfocus="this.style.top='6px'" onblur="this.style.top='-40px'">
+    Skip to main content
+  </a>
+
+  <main id="main-content">
+    <header>
+      <h1>SWIFT MT103 International Wire Transfer</h1>
+      <p>Secure form for international bank transfers. All fields marked with * are required.</p>
+    </header>
+
+    <!-- Loading indicator -->
+    <div class="loading-indicator" id="page-loading" aria-hidden="true">
+      <div style="display:inline-block;width:20px;height:20px;border:3px solid #f3f3f3;border-top:3px solid #007bff;border-radius:50%;animation:spin 1s linear infinite"></div>
+      <p>Loading form...</p>
+    </div>
+
+    <form id="mt103-form" novalidate aria-labelledby="form-title">
+      <h2 id="form-title">Transfer Details</h2>
+      
+      <fieldset>
+        <legend>Sender Information</legend>
+        
+        <div class="form-group">
+          <label for="sender_name">Sender Name *</label>
+          <input 
+            id="sender_name" 
+            name="sender_name" 
+            type="text"
+            required 
+            autocomplete="name"
+            aria-required="true"
+            minlength="2"
+            maxlength="100"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="sender_account">Sender Account Number *</label>
+          <input 
+            id="sender_account" 
+            name="sender_account" 
+            type="text"
+            required 
+            autocomplete="off"
+            aria-required="true"
+            minlength="4"
+            maxlength="34"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="sender_iban">Sender IBAN *</label>
+          <input 
+            id="sender_iban" 
+            name="sender_iban" 
+            type="text"
+            required 
+            autocomplete="off"
+            aria-required="true"
+            minlength="15"
+            maxlength="34"
+            placeholder="e.g., GB82 WEST 1234 5698 7654 32"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="sender_bank">Sender Bank Name *</label>
+          <input 
+            id="sender_bank" 
+            name="sender_bank" 
+            type="text"
+            required 
+            autocomplete="off"
+            aria-required="true"
+            minlength="2"
+            maxlength="100"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="sender_swift">Sender SWIFT Code *</label>
+          <input 
+            id="sender_swift" 
+            name="sender_swift" 
+            type="text"
+            required 
+            autocomplete="off"
+            aria-required="true"
+            minlength="8"
+            maxlength="11"
+            placeholder="e.g., DEUTDEFF"
+          >
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Receiver Information</legend>
+        
+        <div class="form-group">
+          <label for="receiver_name">Receiver Name *</label>
+          <input 
+            id="receiver_name" 
+            name="receiver_name" 
+            type="text"
+            required 
+            autocomplete="off"
+            aria-required="true"
+            minlength="2"
+            maxlength="100"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="receiver_iban">Receiver IBAN *</label>
+          <input 
+            id="receiver_iban" 
+            name="receiver_iban" 
+            type="text"
+            required 
+            autocomplete="off"
+            aria-required="true"
+            minlength="15"
+            maxlength="34"
+            placeholder="e.g., FR14 2004 1010 0505 0001 3M02 606"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="receiver_bank">Receiver Bank Name *</label>
+          <input 
+            id="receiver_bank" 
+            name="receiver_bank" 
+            type="text"
+            required 
+            autocomplete="off"
+            aria-required="true"
+            minlength="2"
+            maxlength="100"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="receiver_swift">Receiver SWIFT Code *</label>
+          <input 
+            id="receiver_swift" 
+            name="receiver_swift" 
+            type="text"
+            required 
+            autocomplete="off"
+            aria-required="true"
+            minlength="8"
+            maxlength="11"
+            placeholder="e.g., BNPAFRPP"
+          >
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Transfer Amount</legend>
+        
+        <div class="form-group">
+          <label for="amount">Transfer Amount (EUR) *</label>
+          <input 
+            id="amount" 
+            name="amount" 
+            type="number"
+            required 
+            autocomplete="off"
+            aria-required="true"
+            min="0.01"
+            max="999999.99"
+            step="0.01"
+            placeholder="0.00"
+          >
+        </div>
+      </fieldset>
+
+      <button type="submit" aria-describedby="submit-help">
+        Send Transfer
+      </button>
+      <div id="submit-help" class="help-text" style="font-size:12px;color:#666;margin-top:5px">
+        Press Ctrl+Enter to submit quickly
+      </div>
+    </form>
+
+    <div class="result" id="result" role="status" aria-live="polite" aria-atomic="true"></div>
+  </main>
+
+  <footer style="margin-top:40px;text-align:center;font-size:12px;color:#666">
+    <p>Secure MT103 Transfer System v1.0</p>
+  </footer>
+
+  <!-- Load JavaScript with performance optimizations -->
+  <script>
+    // Show loading indicator initially
+    document.getElementById('page-loading').style.display = 'block';
+    
+    // Hide loading when form is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('page-loading').style.display = 'none';
+    });
+    
+    // Fallback for users without JavaScript
+    document.getElementById('mt103-form').addEventListener('submit', function(e) {
+      if (!window.MT103FormHandler) {
+        alert('JavaScript is required for form validation. Please enable JavaScript and try again.');
+        e.preventDefault();
+      }
+    });
+  </script>
+  
+  <!-- Load main script asynchronously -->
+  <script src="assets/script.js" async></script>
+  
+  <!-- Service Worker registration for caching -->
+  <script>
+    if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js')
+          .then(function(registration) {
+            console.log('SW registered: ', registration);
+          })
+          .catch(function(registrationError) {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+  </script>
+  
+  <noscript>
+    <style>
+      .loading-indicator { display: none !important; }
+      #submit-help { display: none; }
+    </style>
+    <div style="background:#fff3cd;border:1px solid #ffeaa7;padding:10px;margin:20px 0;border-radius:4px">
+      <strong>JavaScript Required:</strong> This form requires JavaScript for validation and enhanced functionality. 
+      Please enable JavaScript in your browser.
+    </div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,71 @@
+{
+  "name": "mt103-transfer-form",
+  "version": "1.0.0",
+  "description": "Optimized SWIFT MT103 transfer form with performance enhancements",
+  "main": "templates/form_optimized.html",
+  "scripts": {
+    "dev": "concurrently \"npm run watch-css\" \"npm run watch-js\" \"npm run serve\"",
+    "build": "npm run clean && npm run build-css && npm run build-js && npm run optimize-html && npm run analyze",
+    "build-css": "postcss templates/assets/styles.css -o dist/assets/styles.min.css --config postcss.config.js",
+    "build-js": "uglifyjs templates/assets/script.js -o dist/assets/script.min.js --compress --mangle --source-map",
+    "optimize-html": "html-minifier --input-dir templates --output-dir dist --remove-comments --collapse-whitespace --minify-css --minify-js --file-ext html",
+    "watch-css": "postcss templates/assets/styles.css -o dist/assets/styles.min.css --watch",
+    "watch-js": "uglifyjs templates/assets/script.js -o dist/assets/script.min.js --watch",
+    "serve": "live-server dist --port=3000 --open=/form_optimized.html",
+    "clean": "rimraf dist",
+    "analyze": "npm run analyze-bundle && npm run lighthouse",
+    "analyze-bundle": "bundlesize",
+    "lighthouse": "lighthouse http://localhost:3000/form_optimized.html --output html --output-path ./reports/lighthouse.html --chrome-flags=\"--headless\"",
+    "test-performance": "node scripts/performance-test.js",
+    "gzip-analysis": "node scripts/gzip-analysis.js",
+    "critical-css": "critical --base dist --src form_optimized.html --target critical.css --width 1200 --height 900",
+    "sw-precache": "sw-precache --config sw-precache-config.js"
+  },
+  "bundlesize": [
+    {
+      "path": "dist/assets/styles.min.css",
+      "maxSize": "5kb"
+    },
+    {
+      "path": "dist/assets/script.min.js",
+      "maxSize": "15kb"
+    },
+    {
+      "path": "dist/form_optimized.html",
+      "maxSize": "8kb"
+    }
+  ],
+  "keywords": [
+    "mt103",
+    "swift",
+    "performance",
+    "optimization",
+    "banking"
+  ],
+  "author": "MT103 Performance Team",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "bundlesize": "^0.18.1",
+    "concurrently": "^8.2.2",
+    "critical": "^6.1.2",
+    "cssnano": "^6.0.1",
+    "html-minifier": "^4.0.0",
+    "lighthouse": "^11.3.0",
+    "live-server": "^1.2.2",
+    "postcss": "^8.4.32",
+    "postcss-cli": "^11.0.0",
+    "rimraf": "^5.0.5",
+    "sw-precache": "^5.2.1",
+    "uglify-js": "^3.17.4"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ]
+}
